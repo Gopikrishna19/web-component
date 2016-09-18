@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Web Components</title>
+</head>
+<body>
+
+<my-pets pets="[{type: 'dog', name: 'Jimmy'}, {type: 'cat', name: 'Tommy'}]"></my-pets>
+
+<div is="my-pets" pets="[{type: 'dog', name: 'Jimmy'}, {type: 'cat', name: 'Tommy'}]"></div>
+
+<template class="pet-template">
+  <style>
+    :host {
+      display: block;
+      margin-bottom: 10px;
+    }
+    .type {
+      text-decoration: underline;
+    }
+  </style>
+  My pet is a <span class="type"></span>, named <span class="name"></span>.
+</template>
+
+<script src="index.js"></script>
+
+</body>
+</html>
