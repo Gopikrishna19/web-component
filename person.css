@@ -1,0 +1,57 @@
+* {
+  box-sizing: border-box;
+}
+
+:host {
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  display: inline-block;
+  font-family: sans-serif;
+  margin: 5px;
+  padding: 10px;
+  align-items: center;
+}
+
+.name {
+  align-items: baseline;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.name h1 {
+  margin: 0 10px 0 0;
+}
+
+.name h2 {
+  color: #888;
+  margin: 0;
+}
+
+.details {
+  display: flex;
+}
+
+.details img {
+  border: 2px solid #f8f8f8;
+  height: 100px;
+  margin-right: 10px;
+  width: 100px;
+}
+
+.details ul {
+  list-style: none;
+  padding: 0;
+}
+
+.details li {
+  display: flex;
+}
+
+.details .label {
+  color: #888;
+  width: 60px;
+}
+
+.details .value {
+  font-weight: bold;
+}
