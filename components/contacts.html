@@ -1,0 +1,32 @@
+<template>
+  <style>
+    :host {
+      font-family: sans-serif;
+    }
+  </style>
+  <content select="h1"></content>
+  <content select="h2"></content>
+  <content select="dir-persons"></content>
+  <content></content>
+</template>
+
+<script>
+  (() => {
+
+    const doc = document.currentScript.ownerDocument;
+    const template = doc.querySelector('template');
+    const Contacts = Object.create(HTMLElement.prototype);
+
+    Contacts.createdCallback = function () {
+      const root = this.createShadowRoot();
+      const clone = document.importNode(template.content, true);
+
+      root.appendChild(clone)
+    };
+
+    document.registerElement('dir-contacts', {
+      prototype: Contacts
+    });
+
+  })();
+</script>

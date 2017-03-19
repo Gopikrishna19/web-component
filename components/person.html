@@ -1,0 +1,59 @@
+<template>
+  <link rel="stylesheet" href="./components/person.css">
+  <div class="name">
+    <h1 class="first-name"></h1>
+    <h2 class="last-name"></h2>
+  </div>
+  <div class="details">
+    <img src="assets/person.svg" alt="photo">
+    <ul>
+      <li class="gender">
+        <span class="label">Gender</span>
+        <span class="value"></span>
+      </li>
+      <li class="age">
+        <span class="label">Age</span>
+        <span class="value"></span>
+      </li>
+      <li class="email">
+        <span class="label">eMail</span>
+        <span class="value"></span>
+      </li>
+    </ul>
+  </div>
+</template>
+
+<script>
+  (() => {
+
+    const doc = document.currentScript.ownerDocument;
+    const template = doc.querySelector('template');
+    const Person = Object.create(HTMLElement.prototype);
+
+    Person.createdCallback = function () {
+      const root = this.createShadowRoot();
+      const clone = document.importNode(template.content, true);
+
+      root.appendChild(clone)
+    };
+
+    Person.attributeChangedCallback = function (name, oldValue, newValue) {
+      let query = `.${name}`;
+
+      if (/age|gender|email/.test(name)) {
+        query += ' .value';
+      }
+
+      const element = this.shadowRoot.querySelector(query);
+
+      if (element) {
+        element.innerHTML = newValue;
+      }
+    };
+
+    document.registerElement('dir-person', {
+      prototype: Person
+    });
+
+  })();
+</script>

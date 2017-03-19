@@ -4,6 +4,9 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Web Components</title>
+
+    <link rel="import" href="components/contacts.html" class="contacts">
+    <link rel="import" href="components/person.html" class="contacts">
   </head>
   <body>
 
@@ -13,46 +16,7 @@
       <dir-persons src="data.json"></dir-persons>
     </dir-contacts>
 
-    <template class="contacts">
-      <style>
-        :host {
-          font-family: sans-serif;
-        }
-      </style>
-      <content select="h1"></content>
-      <content select="h2"></content>
-      <content select="dir-persons"></content>
-      <content></content>
-    </template>
-
-    <template class="person">
-      <link rel="stylesheet" href="person.css">
-      <div class="name">
-        <h1 class="first-name"></h1>
-        <h2 class="last-name"></h2>
-      </div>
-      <div class="details">
-        <img src="assets/person.svg" alt="photo">
-        <ul>
-          <li class="gender">
-            <span class="label">Gender</span>
-            <span class="value"></span>
-          </li>
-          <li class="age">
-            <span class="label">Age</span>
-            <span class="value"></span>
-          </li>
-          <li class="email">
-            <span class="label">eMail</span>
-            <span class="value"></span>
-          </li>
-        </ul>
-      </div>
-    </template>
-
     <script src="index.js"></script>
-    <script src="components/contacts.js"></script>
     <script src="components/persons.js"></script>
-    <script src="components/person.js"></script>
   </body>
 </html>
