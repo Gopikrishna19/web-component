@@ -3,12 +3,15 @@
   'use strict';
 
   const createPerson = person => {
-    const templatePerson = document.querySelector('template.person');
-    const clonePerson = document.importNode(templatePerson.content, true);
+    const personElement = document.createElement('dir-person');
 
-    clonePerson.querySelector('.name').innerHTML = `${person.first_name} ${person.last_name}`;
+    personElement.setAttribute('first-name', person.first_name);
+    personElement.setAttribute('last-name', person.last_name);
+    personElement.setAttribute('email', person.email);
+    personElement.setAttribute('gender', person.gender);
+    personElement.setAttribute('age', person.age);
 
-    return clonePerson;
+    return personElement
   };
 
   const fetchPerson = function () {
