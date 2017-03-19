@@ -15,14 +15,20 @@
 
   fetch('data.json')
     .then(response => response.json())
-    .then(data => {
+    .then(list => {
 
-      data.forEach(person => {
+      list.forEach(person => {
 
         document.body.appendChild(createPerson(person));
 
-      })
+      });
 
-    })
+      const persons = document.createElement('dir-persons');
+
+      persons.list = list;
+
+      document.body.appendChild(persons);
+
+    });
 
 })();
