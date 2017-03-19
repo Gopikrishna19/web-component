@@ -2,28 +2,26 @@
 
   'use strict';
 
-  const createPerson = () => {
-    const templatePerson = document.querySelector('template.person');
-
-    return document.importNode(templatePerson.content, true);
-  };
-
+  const templatePerson = document.querySelector('template.person');
   const Person = Object.create(HTMLElement.prototype);
 
   Person.createdCallback = function () {
-    this.appendChild(createPerson())
+    const root = this.createShadowRoot();
+    const clone = document.importNode(templatePerson.content, true);
+
+    root.appendChild(clone)
   };
 
   Person.attributeChangedCallback = function (name, oldValue, newValue) {
     let query = `.${name}`;
 
-    if(/age|gender|email/.test(name)) {
+    if (/age|gender|email/.test(name)) {
       query += ' .value';
     }
 
-    const element = this.querySelector(query);
+    const element = this.shadowRoot.querySelector(query);
 
-    if(element) {
+    if (element) {
       element.innerHTML = newValue;
     }
   };
