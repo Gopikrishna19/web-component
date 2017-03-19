@@ -7,7 +7,23 @@
   </head>
   <body>
 
-    <dir-persons src="data.json"></dir-persons>
+    <dir-contacts>
+      <h1>Contacts</h1>
+      <p>copyright &copy; sandalblack19@gmail.com 2017</p>
+      <dir-persons src="data.json"></dir-persons>
+    </dir-contacts>
+
+    <template class="contacts">
+      <style>
+        :host {
+          font-family: sans-serif;
+        }
+      </style>
+      <content select="h1"></content>
+      <content select="h2"></content>
+      <content select="dir-persons"></content>
+      <content></content>
+    </template>
 
     <template class="person">
       <link rel="stylesheet" href="person.css">
@@ -35,6 +51,7 @@
     </template>
 
     <script src="index.js"></script>
+    <script src="components/contacts.js"></script>
     <script src="components/persons.js"></script>
     <script src="components/person.js"></script>
   </body>
