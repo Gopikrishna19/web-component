@@ -2,23 +2,37 @@
 
   'use strict';
 
+  const createPerson = person => {
+    const templatePerson = document.querySelector('template.person');
+    const clonePerson = document.importNode(templatePerson.content, true);
+
+    clonePerson.querySelector('.name').innerHTML = `${person.first_name} ${person.last_name}`;
+
+    return clonePerson;
+  };
+
+  const fetchPerson = function () {
+    const src = this.getAttribute('src');
+
+    fetch(src)
+      .then(response => response.json())
+      .then(list =>
+        list.forEach(person =>
+          this.appendChild(createPerson(person))
+        )
+      );
+  };
+
   const Persons = Object.create(HTMLElement.prototype);
 
-  Persons.createdCallback = function (...args) {
-    console.log('created', ...args);
+  Persons.createdCallback = function () {
+    fetchPerson.call(this);
   };
 
-  Persons.attributeChangedCallback = function (...args) {
-    console.log('attribute changed', ...args);
-  };
-
-  Persons.attachedCallback = function (...args) {
-    console.log('attached', ...args);
-    console.log(this.list);
-  };
-
-  Persons.detachedCallback = function (...args) {
-    console.log('detached', ...args);
+  Persons.attributeChangedCallback = function (name) {
+    if (name === 'src') {
+      fetchPerson.call(this);
+    }
   };
 
   document.registerElement('dir-persons', {
