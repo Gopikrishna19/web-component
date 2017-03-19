@@ -10,10 +10,29 @@
     <dir-persons src="data.json"></dir-persons>
 
     <template class="person">
-      <h1 class="name"></h1>
+      <img src="assets/person.svg" alt="photo">
+      <div class="details">
+        <h1 class="first-name"></h1>
+        <h2 class="last-name"></h2>
+        <ul>
+          <li class="gender">
+            <span class="label">Gender</span>
+            <span class="value"></span>
+          </li>
+          <li class="age">
+            <span class="label">Age</span>
+            <span class="value"></span>
+          </li>
+          <li class="email">
+            <span class="label">eMail</span>
+            <span class="value"></span>
+          </li>
+        </ul>
+      </div>
     </template>
 
     <script src="index.js"></script>
     <script src="components/persons.js"></script>
+    <script src="components/person.js"></script>
   </body>
 </html>
